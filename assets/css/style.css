@@ -1,0 +1,36 @@
+/* global */
+
+body {
+    background:  url('../images/train-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+.container {
+}
+
+/* general */
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Montserrat', sans-serif;
+    color:  #BFDFFF;
+    text-shadow: 2px 2px black;
+}
+h3 {
+    text-align: center;
+    color: silver;
+}
+.panel-primary {
+    opacity: 0.90;
+}
+/* media queries */
+
+@media screen and (max-width: 442px) {
+
+@media screen and (min-width: 443px) and (max-width: 601px) {
+
+@media screen and (min-width: 602px) and (max-width: 715px) {
+
+@media screen and (min-width: 716px) and (max-width: 991px) {
