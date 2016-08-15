@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>GifTastic Application</title>
+    <title>Train Time Schedule</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -19,6 +19,7 @@
     <!-- Google Font Header -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -46,7 +47,7 @@
                         <table class="table table-hover" id='trainScheduleTable'>
                             <thead>
                                 <tr>
-                                    <th>Train Time</th>
+                                    <th>Train Name</th>
                                     <th>Destination</th>
                                     <th>Frequency (min)</th>
                                     <th>Next Arrival</th>
@@ -75,7 +76,7 @@
                     <form>
                         <div class="form-group">
                             <label for="">Train Name</label>
-                            <input type="text" class="form-control" id="trainNameInput">
+                            <input type="text" class="form-control" id="nameInput">
                         </div>
 
                         <div class="form-group">
@@ -85,7 +86,7 @@
 
                         <div class="form-group">
                             <label for="">First Train Time (HH:mm - military time)</label>
-                            <input type="text" class="form-control" id="startInput">
+                            <input type="text" class="form-control" id="timeInput">
                         </div>
 
                         <div class="form-group">
