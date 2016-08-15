@@ -33,18 +33,20 @@
                 <div class="page-header">
                     <h1>Train Destination Schedule</h1>
                     <h3>List of Arrival Times</h3>
-                </div>
+                </div><!-- end page-header -->
             </div><!-- end col-sm-12 -->
         </div><!-- end row -->
 
+        <!-- Train Schedule Output Panel -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
-                    </div>
+                    </div><!-- end panel-heading -->
                     <div class="panel-body">
                         <table class="table table-hover" id='trainScheduleTable'>
+                            <!-- Train Schedule Panel Heading -->
                             <thead>
                                 <tr>
                                     <th>Train Name</th>
@@ -53,54 +55,52 @@
                                     <th>Next Arrival</th>
                                     <th>Minutes Away</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            </thead><!-- end table heading -->
+                            <tbody></tbody>
+                        </table><!-- end table -->
+                    </div><!-- end panel-body -->
+                </div><!-- end panel -->
+            </div><!-- end col-sm-12 -->
+        </div><!-- end row -->
 
+        <!-- Train Input Panel -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>Add Train</strong></h3>
-                    </div>
+                    </div><!-- end panel-heading -->
                     <div class="panel-body">
-                
 
                     <!-- Entry Form -->
                     <form>
                         <div class="form-group">
                             <label for="">Train Name</label>
                             <input type="text" class="form-control" id="nameInput">
-                        </div>
+                        </div><!-- end form-group -->
 
                         <div class="form-group">
                             <label for="">Destination</label>
                             <input type="text" class="form-control" id="destinationInput">
-                        </div>
+                        </div><!-- end form-group -->
 
                         <div class="form-group">
                             <label for="">First Train Time (HH:mm - military time)</label>
                             <input type="text" class="form-control" id="startTimeInput">
-                        </div>
+                        </div><!-- end form-group -->
 
                         <div class="form-group">
                             <label for="">Frequency (min)</label>
                             <input type="text" class="form-control" id="frequencyInput">
-                        </div>
+                        </div><!-- end form-group -->
                         
                         <button type="submit" class="btn btn-primary" id="addTrainBtn">Submit</button>
-                    </form>
+                    </form><!-- end form -->
 
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div><!-- end panel-body -->
+                </div><!-- end panel -->
+            </div><!-- end col-sm-12 -->
+        </div><!-- end row -->
 
     <!-- Bootstrap JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

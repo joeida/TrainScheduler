@@ -9,8 +9,10 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+// Process done on Train Input
 var compute = {
 
+    // Create new train object, push do DB, and clear input
     newTrain: function(name, destination, startTime, frequency) {
         var newTrain = {
             name: name,
@@ -21,11 +23,27 @@ var compute = {
         db.pushTrain(newTrain);
         render.clearInput();
 
+    },
+
+    // Compute minutes away and next arrival time
+    nextTrain: function(startTime, frequency) {
+        var currentTime = moment();
+        var pastYearTime = moment(startTime, 'hh:mm').subtract(1, 'years');
+        var referenceMinutes = currentTime.diff(moment(pastYearTime), 'minutes');
+        var timeDiffReference = referenceMinutes % frequency;
+        var minutesAway = frequency - timeDiffReference;
+        var nextArrival = currentTime.add(minutesAway, 'minutes').format('hh:mm');
+        var nextTrain = {
+            nextArrival: nextArrival,
+            minutesAway: minutesAway
+        };
+        return nextTrain;
     }
 };
 
 var db = {
 
+    // Push new train object to database
     pushTrain: function(newTrain) {
         database.ref().push(newTrain)
     }
@@ -33,6 +51,7 @@ var db = {
 
 var render = {
 
+    // Clear input fields after data is submitted
     clearInput: function() {
         $("#nameInput").val("");
         $("#destinationInput").val("");
@@ -40,28 +59,37 @@ var render = {
         $("#frequencyInput").val("");
     },
 
+    // Clear rendered schedule output
     clearSchedule: function() {
         $("#trainScheduleTable tbody").empty();
     },
 
-    renderSchedule: function(newTrain) {
-        var name = newTrain.name;
-        var destination = newTrain.destination;
-        var startTime = newTrain.startTime;
-        var frequency = newTrain.frequency;
-        
+    // Render train schedule output
+    renderSchedule: function(newTrainObj) {
+        var name = newTrainObj.name;
+        var destination = newTrainObj.destination;
+        var startTime = newTrainObj.startTime;
+        var frequency = newTrainObj.frequency;
+        var nextTrainObj = compute.nextTrain(startTime, frequency);
+        var nextArrival = nextTrainObj.nextArrival;
+        var minutesAway = nextTrainObj.minutesAway;
         var row = $('<tr>');
         var nameOut = $('<td>' + name + '</td>');
         var destinationOut = $('<td>' + destination + '</td>');
         var frequencyOut = $('<td>' + frequency + '</td>');
+        var nextArrivalOut = $('<td>' + nextArrival + '</td>');
+        var minutesAwayOut = $('<td>' + minutesAway + '</td>');
         row.append(nameOut);
         row.append(destinationOut);
         row.append(frequencyOut);
+        row.append(nextArrivalOut);
+        row.append(minutesAwayOut);
         $('#trainScheduleTable tbody').append(row);
     }
 
 };
 
+// Process data inputs when add train button is pressed
 $("#addTrainBtn").on("click", function() {
 
     var name = $("#nameInput").val().trim();
@@ -73,9 +101,9 @@ $("#addTrainBtn").on("click", function() {
 
     return false;
 
-
 });
 
+// Process database information on startup and whenever it changes
 database.ref().on("value", function(snapshot) {
 
     render.clearSchedule();
@@ -92,8 +120,3 @@ database.ref().on("value", function(snapshot) {
     });
 
 });
-
-
-
-
-
