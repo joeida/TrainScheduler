@@ -11,11 +11,11 @@ var database = firebase.database();
 
 var compute = {
 
-    newTrain: function(name, destination, time, frequency) {
+    newTrain: function(name, destination, startTime, frequency) {
         var newTrain = {
             name: name,
             destination: destination,
-            time: time,
+            startTime: startTime,
             frequency: frequency
         };
         db.pushTrain(newTrain);
@@ -36,7 +36,7 @@ var render = {
     clearInput: function() {
         $("#nameInput").val("");
         $("#destinationInput").val("");
-        $("#timeInput").val("");
+        $("#startTimeInput").val("");
         $("#frequencyInput").val("");
     },
 
@@ -45,12 +45,18 @@ var render = {
     },
 
     renderSchedule: function(newTrain) {
+        var name = newTrain.name;
+        var destination = newTrain.destination;
+        var startTime = newTrain.startTime;
+        var frequency = newTrain.frequency;
+        
         var row = $('<tr>');
-        for ( var key in newTrain) {
-            var data = $('<td>');
-            data.html(newTrain[key]);
-            row.append(data);
-        }
+        var nameOut = $('<td>' + name + '</td>');
+        var destinationOut = $('<td>' + destination + '</td>');
+        var frequencyOut = $('<td>' + frequency + '</td>');
+        row.append(nameOut);
+        row.append(destinationOut);
+        row.append(frequencyOut);
         $('#trainScheduleTable tbody').append(row);
     }
 
@@ -60,10 +66,10 @@ $("#addTrainBtn").on("click", function() {
 
     var name = $("#nameInput").val().trim();
     var destination = $("#destinationInput").val().trim();
-    var time = $("#timeInput").val().trim();
+    var startTime = $("#startTimeInput").val().trim();
     var frequency = $("#frequencyInput").val().trim();
 
-    compute.newTrain(name, destination, time, frequency);
+    compute.newTrain(name, destination, startTime, frequency);
 
     return false;
 
@@ -77,10 +83,8 @@ database.ref().on("value", function(snapshot) {
         var newTrain = {
             name: childSnapshot.val().name,
             destination: childSnapshot.val().destination,
-            time: childSnapshot.val().time,
-            frequency: childSnapshot.val().frequency,
-            nextArrival: "",
-            minutesAwway: ""
+            startTime: childSnapshot.val().startTime,
+            frequency: childSnapshot.val().frequency
         };
 
         render.renderSchedule(newTrain);
