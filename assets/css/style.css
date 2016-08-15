@@ -6,8 +6,6 @@ body {
     font-family: 'Roboto', sans-serif;
     color: black;
 }
-.container {
-}
 
 /* general */
 
@@ -27,10 +25,52 @@ h3 {
 }
 /* media queries */
 
-@media screen and (max-width: 442px) {
+@media screen and (max-width: 480px) {
 
-@media screen and (min-width: 443px) and (max-width: 601px) {
+    body {
+        font-size: 10px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+    strong {
+        font-size: 12px;
+    }
+    input {
+        font-size: 10px;
+    }
 
-@media screen and (min-width: 602px) and (max-width: 715px) {
+}
+@media screen and (min-width: 481px) and (max-width: 720px) {
 
-@media screen and (min-width: 716px) and (max-width: 991px) {
+    body {
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    strong {
+        font-size: 14px;
+    }
+    input {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (min-width: 721px) and (max-width: 1024px) {
+
+    h1 {
+        font-size: 45px;
+    }
+    h3 {
+        font-size: 35px;
+    }
+
+}
