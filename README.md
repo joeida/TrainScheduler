@@ -11,7 +11,8 @@
     3. First Train Time - in military time
     4. Frequency - in minutes
   2. Calculate when the next train will arrive relative to the current time.
-  3. Add data peristency via Firebase database.  
+  3. Add data peristency via Firebase database.
+  4. Log schedule information to screen.
   
 ### Screenshot
 <img width="576" alt="trainscheduler" src="https://cloud.githubusercontent.com/assets/18523345/20654314/def92bb0-b4cc-11e6-8d2b-5773d6e6549a.png">
