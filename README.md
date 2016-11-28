@@ -4,7 +4,7 @@
 * Create train destination scheduling application using HTML, CSS, Javascript.
 
 ### Objective
-* Use HTML, CSS, Javascript, and Firebase to create a train destination scheduling application.
+* Deomonstrate the use of HTML, CSS, Javascript, and Firebase in the creation of a train destination scheduling application.
   1. Create user input for the following
     1. Train time
     2. Destination
